@@ -1,6 +1,9 @@
 {
-  "name": "Spotified",
-  "version": "0.1.0",
+  "name": "Spotified Frontend",
+  "engines": {
+    "node": ">=13.14.0 <15"
+  },
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
