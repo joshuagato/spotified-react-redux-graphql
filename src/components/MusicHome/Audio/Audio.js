@@ -15,7 +15,7 @@ class Audio extends Component {
     window.$timer = '';
 
     this.setAudioToPlay = track => {
-      this.props.onSetCurentlyPlaying(track);
+      this.props.onSetCurrentlyPlaying(track);
       this.props.audio.src = process.env.REACT_APP_SERVER_MUSIC_URL + track.path;
     };
 
@@ -123,7 +123,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onPlay: () => dispatch(actions.trackPlaying()),
     onPause: () => dispatch(actions.trackPaused()),
-    onSetCurentlyPlaying: track => dispatch(actions.setCurentlyPlaying(track))
+    onSetCurrentlyPlaying: track => dispatch(actions.setCurentlyPlaying(track))
   };
 };
 
