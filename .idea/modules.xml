@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Spotified.iml" filepath="$PROJECT_DIR$/.idea/Spotified.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../spotified-node-express-graphql/.idea/spotified-node-express-graphql.iml" filepath="$PROJECT_DIR$/../spotified-node-express-graphql/.idea/spotified-node-express-graphql.iml" />
     </modules>
   </component>
 </project>
