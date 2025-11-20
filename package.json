@@ -1,5 +1,5 @@
 {
-  "name": "Spotified Frontend",
+  "name": "spotified-frontend",
   "engines": {
     "node": ">=13.14.0 <15"
   },
