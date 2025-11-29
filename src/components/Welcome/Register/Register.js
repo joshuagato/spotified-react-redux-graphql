@@ -36,11 +36,18 @@ class Register extends Component {
     this.props.onRegister(userInput);
   }
 
+  componentDidUpdate() {
+    console.log(this.props);
+  }
+
   render() {
     return (
-      <div className="register">
+      <div className="register from-right">
         <h2>Create your your account</h2>
         <form onSubmit={this.registerHandler}>
+          <p className="error-message">{this.props.errors[0]?.message}</p>
+          <p className="success-message">{this.props.message}</p>
+
           <FormControls ref="fn" id="fname" name="firstname" title="First Name" 
             plcHolder="e.g Joshua" changed={this.changeHandler} />
 
@@ -54,10 +61,10 @@ class Register extends Component {
             plcHolder="e.g joshuagato37@gmail.com" changed={this.changeHandler} />
 
           <FormControls ref="pwd1" id="pwd1" name="password" title="Password" 
-            plcHolder="e.g Your password" changed={this.changeHandler} />
+            plcHolder="e.g Your password" changed={this.changeHandler} type="password" />
 
           <FormControls ref="pwd2" id="pwd2" name="password" title="Confirm Password" 
-            plcHolder="e.g Your password Confirmation" changed={this.changeHandler} />
+            plcHolder="e.g Your password Confirmation" changed={this.changeHandler} type="password" />
 
           <button type="submit">Register</button>
         </form>
@@ -70,7 +77,8 @@ class Register extends Component {
 const mapStateToProps = state => {
   return {
     details: state.regis.details,
-    errors: state.regis.errors
+    errors: state.regis.errors,
+    message: state.regis.message,
   };
 };
 

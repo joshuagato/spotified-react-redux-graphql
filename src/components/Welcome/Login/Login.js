@@ -46,7 +46,7 @@ class Login extends Component {
       if (this.props.isAuthenticated) redirect = <Redirect to={this.props.authRedirectPath} />;
       
       return (
-        <div className="login">
+        <div className="login from-bottom">
           { redirect }
           
           <h2>Login to your account</h2>

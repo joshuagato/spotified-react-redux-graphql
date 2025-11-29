@@ -11,6 +11,24 @@ html, body {
   /* position: fixed; */
 }
 
+@keyframes fromBottom {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fromRight{
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.from-bottom {
+  animation: fromBottom 0.5s ease;
+}
+
+.from-right {
+  animation: fromRight 0.5s ease;
+}
+
 
 
 

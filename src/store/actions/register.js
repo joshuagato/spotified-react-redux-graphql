@@ -1,10 +1,11 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-const registerSuccess = details => {
+const registerSuccess = (details, message) => {
   return {
     type: actionTypes.REGISTER_SUCCESS,
-    details: details
+    details: details,
+    message
   };
 };
 const registerFailure = errors => {
@@ -28,7 +29,8 @@ export const registerUser = userInput => {
     };
 
     axios.post(process.env.REACT_APP_GRAPHQL_URL, graphqlQuery).then(response => {
-      dispatch(registerSuccess(response.data.data));
+      const message = 'Registration Successful. Login to enjoy some good music.'
+      dispatch(registerSuccess(response.data.data, message));
       // dispatch(registerSuccess(response.data.data.createUser));
       // A Redirect and/or success message has to be displayed to the user
     })
