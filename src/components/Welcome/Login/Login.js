@@ -25,7 +25,8 @@ class Login extends Component {
     }
 
     switchToReset = () => {
-      this.props.history.replace('/reset-pw');
+      // this.props.history.replace('/reset-pw');
+      this.props.history.push('/reset-pw');
     };
 
     togglePasswordView = () => {
