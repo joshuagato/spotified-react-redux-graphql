@@ -21,7 +21,6 @@
         "isotope-layout": "^3.0.6",
         "jquery": "^3.5.1",
         "moment": "^2.24.0",
-        "node-sass": "^9.0.0",
         "owl.carousel": "^2.3.4",
         "popper.js": "^1.16.0",
         "prop-types": "^15.7.2",
@@ -68,5 +67,9 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "sass": "^1.96.0",
+        "sass-loader": "^16.0.6"
     }
 }
