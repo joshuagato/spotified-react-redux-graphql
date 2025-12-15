@@ -250,7 +250,7 @@ class LowerSection extends Component {
                             </section>
                         </div>
                     ) : (
-                        <div style={{ marginLeft: "20px" }}>
+                        <div className="left">
                             <OrbitProgress
                                 variant="spokes"
                                 color="#dbdbdbff"
