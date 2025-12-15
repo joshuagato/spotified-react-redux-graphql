@@ -211,9 +211,9 @@ class LowerSection extends Component {
                 <Audio ref={this.audioInstance} />
 
                 <div className="music-player" ref="musicPlayer">
-                    {this.props.currentlyPlaying.title &&
-                    this.props.currentlyPlaying.artwork_path &&
-                    this.props.currentlyPlaying.artistName ? (
+                    {this.props?.currentlyPlaying?.title &&
+                    this.props?.currentlyPlaying?.artwork_path &&
+                    this.props?.currentlyPlaying?.artistName ? (
                         <div className="left" onClick={this.openSongsFromLeft}>
                             <section className="album-art">
                                 {this.props.currentlyPlaying.artwork_path && (
@@ -229,14 +229,17 @@ class LowerSection extends Component {
                                 )}
                             </section>
                             <section className="track-details">
-                                {this.props.currentlyPlaying.title && (
+                                {this.props?.currentlyPlaying?.title && (
                                     <span className="title">
-                                        {this.props.currentlyPlaying.title}
+                                        {this.props?.currentlyPlaying?.title}
                                     </span>
                                 )}
-                                {this.props.currentlyPlaying.artistName && (
+                                {this.props?.currentlyPlaying?.artistName && (
                                     <span className="artist">
-                                        {this.props.currentlyPlaying.artistName}
+                                        {
+                                            this.props?.currentlyPlaying
+                                                ?.artistName
+                                        }
                                     </span>
                                 )}
                             </section>
