@@ -1,91 +1,139 @@
-import React, { Component } from 'react';
-import './Register.scss';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import "./Register.scss";
+import { connect } from "react-redux";
 
-import FormControls from '../../FormControls/FormControls';
-import * as actions from '../../../store/actions/index';
+import FormControls from "../../FormControls/FormControls";
+import * as actions from "../../../store/actions/index";
 // import { registerUser } from '../../../store/actions/index';
 
 class Register extends Component {
-  state = {
-    userInput: {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: ''
-    }
-  };
-
-  registerHandler = event => {
-    event.preventDefault();
-
-    const firstname = this.refs.fn.value;
-    const lastname = this.refs.ln.value;
-    const email1 = this.refs.eml1.value;
-    // const email2 = this.refs.eml2.value;
-    const password1 = this.refs.pwd1.value;
-    // const password2 = this.refs.pwd2.value;  //I shall use these for validation
-    
-    const userInput = {
-      firstname: firstname,
-      lastname: lastname,
-      email: email1,
-      password: password1
+    state = {
+        userInput: {
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+        },
     };
 
-    this.props.onRegister(userInput);
-  }
+    registerHandler = (event) => {
+        event.preventDefault();
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
+        const firstname = this.refs.fn.value;
+        const lastname = this.refs.ln.value;
+        const email1 = this.refs.eml1.value;
+        // const email2 = this.refs.eml2.value;
+        const password1 = this.refs.pwd1.value;
+        // const password2 = this.refs.pwd2.value;  //I shall use these for validation
 
-  render() {
-    return (
-      <div className="register from-right">
-        <h2>Create your your account</h2>
-        <form onSubmit={this.registerHandler}>
-          <p className="error-message">{this.props.errors[0]?.message}</p>
-          <p className="success-message">{this.props.message}</p>
+        const userInput = {
+            firstname: firstname,
+            lastname: lastname,
+            email: email1,
+            password: password1,
+        };
 
-          <FormControls ref="fn" id="fname" name="firstname" title="First Name" 
-            plcHolder="e.g Joshua" changed={this.changeHandler} />
+        this.props.onRegister(userInput);
+    };
 
-          <FormControls ref="ln" id="lname" name="lastname" title="Last Name" 
-            plcHolder="e.g Gato" changed={this.changeHandler} />
-          
-          <FormControls ref="eml1" id="email" name="email" title="Email" 
-            plcHolder="e.g joshuagato37@gmail.com" changed={this.changeHandler} />
+    componentDidUpdate() {
+        console.log(this.props);
+        if (!this.props.errors[0]?.message && this.props.message) {
+            this.refs.fn.value = "";
+            this.refs.ln.value = "";
+            this.refs.eml1.value = "";
+            this.refs.pwd1.value = "";
+        }
+    }
 
-          <FormControls ref="eml2" id="email2" name="email" title="Confirm Email" 
-            plcHolder="e.g joshuagato37@gmail.com" changed={this.changeHandler} />
+    render() {
+        return (
+            <div className="register from-right">
+                <h2>Create your your account</h2>
+                <form onSubmit={this.registerHandler}>
+                    <p className="error-message">
+                        {this.props.errors[0]?.message}
+                    </p>
+                    <p className="success-message">{this.props.message}</p>
 
-          <FormControls ref="pwd1" id="pwd1" name="password" title="Password" 
-            plcHolder="e.g Your password" changed={this.changeHandler} type="password" />
+                    <FormControls
+                        ref="fn"
+                        id="fname"
+                        name="firstname"
+                        title="First Name"
+                        plcHolder="e.g Joshua"
+                        changed={this.changeHandler}
+                    />
 
-          <FormControls ref="pwd2" id="pwd2" name="password" title="Confirm Password" 
-            plcHolder="e.g Your password Confirmation" changed={this.changeHandler} type="password" />
+                    <FormControls
+                        ref="ln"
+                        id="lname"
+                        name="lastname"
+                        title="Last Name"
+                        plcHolder="e.g Gato"
+                        changed={this.changeHandler}
+                    />
 
-          <button type="submit">Register</button>
-        </form>
-        <p onClick={this.props.switchForm}>Already have an account? Log in here!!</p>
-      </div>
-    );
-  }
+                    <FormControls
+                        ref="eml1"
+                        id="email"
+                        name="email"
+                        title="Email"
+                        plcHolder="e.g joshuagato37@gmail.com"
+                        changed={this.changeHandler}
+                    />
+
+                    <FormControls
+                        ref="eml2"
+                        id="email2"
+                        name="email"
+                        title="Confirm Email"
+                        plcHolder="e.g joshuagato37@gmail.com"
+                        changed={this.changeHandler}
+                    />
+
+                    <FormControls
+                        ref="pwd1"
+                        id="pwd1"
+                        name="password"
+                        title="Password"
+                        plcHolder="e.g Your password"
+                        changed={this.changeHandler}
+                        type="password"
+                    />
+
+                    <FormControls
+                        ref="pwd2"
+                        id="pwd2"
+                        name="password"
+                        title="Confirm Password"
+                        plcHolder="e.g Your password Confirmation"
+                        changed={this.changeHandler}
+                        type="password"
+                    />
+
+                    <button type="submit">Register</button>
+                </form>
+                <p onClick={this.props.switchForm}>
+                    Already have an account? Log in here!!
+                </p>
+            </div>
+        );
+    }
 }
 
-const mapStateToProps = state => {
-  return {
-    details: state.regis.details,
-    errors: state.regis.errors,
-    message: state.regis.message,
-  };
+const mapStateToProps = (state) => {
+    return {
+        details: state.regis.details,
+        errors: state.regis.errors,
+        message: state.regis.message,
+    };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onRegister: userInput => dispatch(actions.registerUser(userInput))
-  };
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRegister: (userInput) => dispatch(actions.registerUser(userInput)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
