@@ -211,7 +211,8 @@ class LowerSection extends Component {
                 <Audio ref={this.audioInstance} />
 
                 <div className="music-player" ref="musicPlayer">
-                    {this.props?.currentlyPlaying?.title &&
+                    {this.props?.currentlyPlaying &&
+                    this.props?.currentlyPlaying?.title &&
                     this.props?.currentlyPlaying?.artwork_path &&
                     this.props?.currentlyPlaying?.artistName ? (
                         <div className="left" onClick={this.openSongsFromLeft}>
@@ -255,7 +256,6 @@ class LowerSection extends Component {
                             />
                         </div>
                     )}
-
                     <div className="middle">
                         <section className="controls">
                             <div>
