@@ -43,11 +43,7 @@ class Register extends Component {
     componentDidUpdate() {
         this.sendDataToParent(this.props.loading);
 
-        if (
-            !this.props.errors[0]?.message &&
-            !this.props.errors &&
-            this.props.message
-        ) {
+        if (!this.props.errors && this.props.message) {
             this.refs.fn.value = "";
             this.refs.ln.value = "";
             this.refs.eml1.value = "";
@@ -60,9 +56,7 @@ class Register extends Component {
             <div className="register from-right">
                 <h2>Create your your account</h2>
                 <form onSubmit={this.registerHandler}>
-                    <p className="error-message">
-                        {this.props.errors[0]?.message || this.props.errors}
-                    </p>
+                    <p className="error-message">{this.props.errors}</p>
                     <p className="success-message">{this.props.message}</p>
 
                     <FormControls
