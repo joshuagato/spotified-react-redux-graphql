@@ -27,7 +27,10 @@ class Welcome extends Component {
                 switchForm={this.formSwitchHandler}
             />
         ) : (
-            <Register switchForm={this.formSwitchHandler} />
+            <Register
+                sendDataToParent={this.handleChildData}
+                switchForm={this.formSwitchHandler}
+            />
         );
 
         return (
