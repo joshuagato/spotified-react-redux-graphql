@@ -36,9 +36,18 @@ class Register extends Component {
         this.props.onRegister(userInput);
     };
 
+    sendDataToParent(dataToSend) {
+        this.props.sendDataToParent(dataToSend);
+    }
+
     componentDidUpdate() {
-        console.log(this.props);
-        if (!this.props.errors[0]?.message && this.props.message) {
+        this.sendDataToParent(this.props.loading);
+
+        if (
+            !this.props.errors[0]?.message &&
+            !this.props.errors &&
+            this.props.message
+        ) {
             this.refs.fn.value = "";
             this.refs.ln.value = "";
             this.refs.eml1.value = "";
@@ -52,7 +61,7 @@ class Register extends Component {
                 <h2>Create your your account</h2>
                 <form onSubmit={this.registerHandler}>
                     <p className="error-message">
-                        {this.props.errors[0]?.message}
+                        {this.props.errors[0]?.message || this.props.errors}
                     </p>
                     <p className="success-message">{this.props.message}</p>
 
@@ -124,6 +133,7 @@ class Register extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        loading: state.auth.loading,
         details: state.regis.details,
         errors: state.regis.errors,
         message: state.regis.message,
