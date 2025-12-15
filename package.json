@@ -31,6 +31,7 @@
     "react-dom": "^16.11.0",
     "react-image": "^2.2.2",
     "react-image-gallery": "^0.9.1",
+    "react-loading-indicators": "^1.0.1",
     "react-moment": "^0.9.6",
     "react-native-image-base64": "^0.1.4",
     "react-owl-carousel": "^2.3.1",
