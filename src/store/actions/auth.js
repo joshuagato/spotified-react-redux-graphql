@@ -49,13 +49,13 @@ const setAuthRedirectPath = (path) => {
     };
 };
 
-const authStartLoading = () => {
+export const authStartLoading = () => {
     return {
         type: actionTypes.AUTH_START_LOADING,
     };
 };
 
-const authStopLoading = () => {
+export const authStopLoading = () => {
     return {
         type: actionTypes.AUTH_STOP_LOADING,
     };
@@ -84,12 +84,12 @@ export const auth = (email, password) => {
 
         const graphqlQuery = {
             query: `
-        query UserLogin($email: String!, $password: String!) {
-          login(email: $email, password: $password) {
-            token userId
-          }
-        }
-      `,
+                query UserLogin($email: String!, $password: String!) {
+                    login(email: $email, password: $password) {
+                        token userId
+                    }
+                } 
+            `,
             variables: { email: email, password: password },
         };
 
