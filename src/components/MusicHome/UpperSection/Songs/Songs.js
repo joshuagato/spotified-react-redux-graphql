@@ -24,7 +24,10 @@ export class Songs extends Component {
 
     componentDidUpdate(prevProps, _) {
         if (
-            prevProps.currentlyPlaying.id !== this.props.currentlyPlaying.id &&
+            prevProps?.currentlyPlaying &&
+            this.props?.currentlyPlaying &&
+            prevProps.currentlyPlaying?.id !==
+                this.props.currentlyPlaying?.id &&
             prevProps.songs !== this.props.songs
         ) {
             this.setState({ playlist: this.props.songs });
