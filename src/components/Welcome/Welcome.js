@@ -17,8 +17,6 @@ class Welcome extends Component {
     };
 
     handleChildData = (loading) => {
-        console.log({ loading });
-
         this.setState({ loading });
     };
 
