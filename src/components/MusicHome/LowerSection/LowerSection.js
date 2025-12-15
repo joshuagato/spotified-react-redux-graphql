@@ -98,7 +98,11 @@ class LowerSection extends Component {
             );
         }
 
-        if (prevProps.currentlyPlaying.id !== this.props.currentlyPlaying.id) {
+        if (
+            prevProps?.currentlyPlaying &&
+            this.props?.currentlyPlaying &&
+            prevProps.currentlyPlaying?.id !== this.props.currentlyPlaying?.id
+        ) {
             // WE NEED TO FIX A BUG IN THE CURRENTLYPLAYING PROPS AND THEN PUT THE CANPLAY AUTO FUNCTION HERE
             // THE CURRENTLYPLAYING PROPS CHANGES WHEN WE ENTER AN ALBUM, BUT IF A TRACK WAS PLAYING BEFORE WE ENTERED,
             // IT DOES NOT STOP PLAYING, ALTHOUGH THE CURRPLAYN STATE CHANAGES; AND DUE TO THAT THE PLAYING BAR KEEPS
