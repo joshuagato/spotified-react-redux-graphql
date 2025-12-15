@@ -49,6 +49,18 @@ const setAuthRedirectPath = (path) => {
     };
 };
 
+const authStartLoading = () => {
+    return {
+        type: actionTypes.AUTH_START_LOADING,
+    };
+};
+
+const authStopLoading = () => {
+    return {
+        type: actionTypes.AUTH_STOP_LOADING,
+    };
+};
+
 const authSuccess = (token, userId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
@@ -66,9 +78,9 @@ const authFail = (error) => {
     };
 };
 export const auth = (email, password) => {
-    console.log(process.env.REACT_APP_GRAPHQL_URL);
     return (dispatch) => {
         // We can dispatch authStart here, if for instance we want to implement a spinner
+        dispatch(authStartLoading());
 
         const graphqlQuery = {
             query: `
@@ -95,12 +107,14 @@ export const auth = (email, password) => {
                         response.data.data.login.userId
                     )
                 );
+                dispatch(authStopLoading());
                 dispatch(setAuthRedirectPath("/music-home"));
             })
             .catch((error) => {
                 // console.log(error.response.data.errors[0].message); //we can map through this array
                 if (error.response) console.log("error", error.response);
 
+                dispatch(authStopLoading());
                 dispatch(authFail(error.response));
             });
     };
