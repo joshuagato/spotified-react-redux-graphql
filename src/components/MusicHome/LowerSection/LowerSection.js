@@ -245,10 +245,10 @@ class LowerSection extends Component {
                         <div style={{ marginLeft: "20px" }}>
                             <OrbitProgress
                                 variant="spokes"
-                                color="#4e5044ff"
+                                color="#dbdbdbff"
                                 size="small"
                                 text="loading"
-                                textColor="#4e5044ff"
+                                textColor="#dbdbdbff"
                             />
                         </div>
                     )}
